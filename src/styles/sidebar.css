@@ -1,0 +1,15 @@
+/* styles/sidebar.css */
+.topic-item {
+    padding: 10px;
+    color: #17a2b8; /* Link color */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none; /* Ensure no underline */
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .topic-item:hover {
+    background-color: red; /* Light background on hover */
+    color: #007bff; /* Change color on hover */
+  }
+  

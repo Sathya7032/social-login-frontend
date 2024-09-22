@@ -1,0 +1,40 @@
+.main-box {
+    max-width: 50%;
+    margin: 50px;
+    padding: 30px;
+    color: black;
+    background-color: aquamarine;
+    border-radius: 20px;
+}
+
+.alert {
+    width: 400px;
+    border-color: grey;
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    animation: alertFrame 1s;
+    background-color: rgb(13, 110, 253);
+    color: white;
+    z-index: 99;
+}
+
+@keyframes alertFrame {
+    0% {
+        right: -500px;
+    }
+    100% {
+        right: 20px;
+    }
+}
+
+#logout {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    /* Adjustments for mobile screens */
+    .main-box {
+        flex-direction: column;
+    }
+}

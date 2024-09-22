@@ -1,0 +1,14 @@
+.move-image {
+    animation: moveImage 1.5s forwards; /* Animation duration and direction */
+}
+
+@keyframes moveImage {
+    0% {
+        transform: translateX(100%); /* Start from the right */
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0); /* Move to the left */
+        opacity: 1;
+    }
+}

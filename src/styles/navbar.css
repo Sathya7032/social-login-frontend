@@ -1,0 +1,55 @@
+/* navbar.css */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    flex-wrap: wrap; /* Makes the navbar responsive */
+  }
+
+  .navbar-nav {
+    margin: 0 auto; /* Centers the ul horizontally */
+    display: flex;
+    justify-content: center; /* Ensures the links are centered inside the ul */
+  }
+
+  .brand-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .theme-toggle {
+    margin-left: auto;
+  }
+
+  .navbar-nav .nav-link {
+    font-weight: bold;
+    justify-content: space-evenly;
+    
+  }
+
+  .navbar-nav .nav-link.active {
+    color: tomato !important; /* Change the active link color to tomato */
+    font-weight: bold;
+  }
+  
+  /* Optional: Change the hover color for all links */
+  .navbar-nav .nav-link:hover {
+    color: #ff6347 !important; /* Adjust the hover color if needed */
+  }
+
+  
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .navbar-container {
+      flex-direction: row; /* Stacks the elements vertically on smaller screens */
+      align-items: center;
+    }
+  
+  
+    .theme-toggle {
+      align-self: flex-end; /* Centers the toggle button */
+    }
+  }
+  
