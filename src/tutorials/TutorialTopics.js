@@ -9,7 +9,7 @@ import image from '../styles/astronaut4.png';
 
 const TutorialTopics = () => {
   const { theme } = useContext(ThemeContext); // Access the theme context
-  const baseUrl = 'http://127.0.0.1:8000/app';
+  const baseUrl = 'https://www.acadamicfolio.info/app';
   const { url } = useParams();
   const [topics, setTopics] = useState([]);
   const [selectedTopic, setSelectedTopic] = useState(null); // State for the selected topic
