@@ -49,7 +49,7 @@ const Login = ({ login, isAuthenticated }) => {
         });
 
         const clientID = "692204927708-1m1h5crncccje25m281t9iotr8246d75.apps.googleusercontent.com";
-        const callBackURI = "http://localhost:3000/";
+        const callBackURI = "https://www.acadamicfolio.info";
         window.location.replace(`https://accounts.google.com/o/oauth2/v2/auth?redirect_uri=${callBackURI}&prompt=consent&response_type=code&client_id=${clientID}&scope=openid%20email%20profile&access_type=offline`);
     };
 
