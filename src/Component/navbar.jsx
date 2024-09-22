@@ -59,7 +59,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
                 onClose={handleMenuClose}
               >
                 <MenuItem onClick={handleMenuClose}>
-                  <Button href='/profile' color='inherit'>Profile</Button>
+                  <Button href='change/password/' color='inherit'>Change Password</Button>
                 </MenuItem>
                 <MenuItem onClick={logoutUser}>
                   <Button color='inherit'>Logout</Button>

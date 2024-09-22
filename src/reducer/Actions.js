@@ -80,7 +80,9 @@ export const getUser = () => async dispatch => {
             dispatch({
                 type: TYPE.GET_USER_SUCCESS,
                 payload: res.data
+                
             });
+            console.log(res.data);
         } catch (err) {
             dispatch({
                 type: TYPE.GET_USER_FAIL
