@@ -22,6 +22,7 @@ import McqQuiz from './Pages/McqQuiz';
 import McqTopics from './Pages/McqTopics.js';
 import TutorialTopics from './tutorials/TutorialTopics';
 import Profile from "./Pages/Profile";
+import Topics from "./code/Topics.js";
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
             <Route element={<McqTopics />} path='test/:url' />
             <Route element={<McqQuiz />} path='/topics/:topicId/questions' />
             <Route element={<Profile/>} path='/profile' />
+            <Route element={<Topics />} path="/topics/:url" />
           </Routes>
         </Layout>
       </Router>
