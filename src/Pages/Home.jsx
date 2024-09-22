@@ -13,7 +13,7 @@ const Home = ({ refresh }) => {
 
     // Set the accent color based on the theme context
     const accentColor = theme === 'light' ? 'tomato' : '#ff6347';
-    const baseUrl = 'http://127.0.0.1:8000/app';
+    const baseUrl = 'https://acadamicfolio.pythonanywhere.com/app';
 
     const [tutorials, setTutorials] = useState([]);
 

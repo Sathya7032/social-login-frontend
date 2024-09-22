@@ -8,7 +8,7 @@ import { ThemeContext } from "../Component/ThemeContext";
 import { useTheme } from '@mui/material/styles';
 
 const Codes = () => {
-    const baseUrl = "http://127.0.0.1:8000/app";
+    const baseUrl = "https://acadamicfolio.pythonanywhere.com/app";
     const { url } = useParams();
     const [topics, setTopics] = useState(null);
     const [error, setError] = useState(null);

@@ -6,7 +6,7 @@ import { ThemeContext } from "../Component/ThemeContext";
 import image from '../styles/astronaut2.png'
 
 const CodeTopics = () => {
-    const baseUrl = "http://127.0.0.1:8000/app";
+    const baseUrl = "https://acadamicfolio.pythonanywhere.com/app";
     const { url } = useParams();
     const [codes, setCodes] = useState([]);
     const { theme } = useContext(ThemeContext);

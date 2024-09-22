@@ -22,7 +22,7 @@ const McqQuiz = () => {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/app/topics/${topicId}/questions/`)
+      .get(`https://acadamicfolio.pythonanywhere.com/app/topics/${topicId}/questions/`)
       .then((response) => setQuestions(response.data))
       .catch((error) => console.error('Error fetching questions:', error));
   }, [topicId]);
@@ -59,7 +59,7 @@ const McqQuiz = () => {
 
   const handleSubmit = (timeUp = false) => {
     axios
-      .post('http://127.0.0.1:8000/app/check-answers/', { answers })
+      .post('https://acadamicfolio.pythonanywhere.com/app/check-answers/', { answers })
       .then((response) => {
         setResult({
           ...response.data,

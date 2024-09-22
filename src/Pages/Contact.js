@@ -16,7 +16,7 @@ const Contact = () => {
     const [errors, setErrors] = useState({});
     const [animateImage, setAnimateImage] = useState(false); // State to trigger animation
 
-    const baseUrl = "http://127.0.0.1:8000/app";
+    const baseUrl = "https://acadamicfolio.pythonanywhere.com/app";
     const navigate = useNavigate();
 
     useEffect(() => {

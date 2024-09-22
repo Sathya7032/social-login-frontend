@@ -5,7 +5,7 @@ import { Divider } from "@mui/material";
 import { ThemeContext } from "../Component/ThemeContext";
 
 const Blogs = () => {
-  const baseUrl = "http://127.0.0.1:8000/app";
+  const baseUrl = "https://acadamicfolio.pythonanywhere.com/app";
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);

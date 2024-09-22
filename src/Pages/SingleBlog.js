@@ -7,7 +7,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { ThemeContext } from "../Component/ThemeContext";
 
 const SingleBlog = () => {
-    const baseUrl = "http://127.0.0.1:8000/app";
+    const baseUrl = "https://acadamicfolio.pythonanywhere.com/app";
     const { url } = useParams();
     const { theme } = useContext(ThemeContext);
     const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'));

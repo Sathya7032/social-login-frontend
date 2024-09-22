@@ -12,7 +12,7 @@ const Shorts = () => {
 
   useEffect(() => {
     // Fetch categories from API
-    axios.get('http://127.0.0.1:8000/app/languages/')
+    axios.get('https://acadamicfolio.pythonanywhere.com/app/languages/')
       .then(response => {
         setCategories(response.data);
       })
@@ -23,7 +23,7 @@ const Shorts = () => {
 
   useEffect(() => {
     // Fetch videos based on selected category from API
-    let url = 'http://127.0.0.1:8000/app/api/shorts/';
+    let url = 'https://acadamicfolio.pythonanywhere.com/app/api/shorts/';
     if (selectedCategory) {
       url += `?category_id=${selectedCategory}`;
     }
