@@ -259,7 +259,7 @@ export const googleLogin = (code) => async dispatch => {
         };
         const body = JSON.stringify({ code })
         try {
-            const res = await axios.post("https://acadamicfolio.pythonanywhere.com/ dj-rest-auth/google/", body, config)
+            const res = await axios.post("https://acadamicfolio.pythonanywhere.com/dj-rest-auth/google/", body, config)
             dispatch({
                 type: TYPE.LOGIN_SUCCESS,
                 payload: res.data
