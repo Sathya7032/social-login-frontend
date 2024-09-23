@@ -51,7 +51,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
           {isAuthenticated ? (
             <>
               <IconButton onClick={handleMenuOpen}>
-                <Avatar sx={{ bgcolor: accentColor }}>A</Avatar> {/* Change 'U' to user's initial */}
+                <Avatar sx={{ bgcolor: accentColor, width: 32, height: 32, fontSize: 16 }}>A</Avatar> {/* Change 'U' to user's initial */}
               </IconButton>
               <Menu
                 anchorEl={anchorEl}
