@@ -137,9 +137,21 @@ const Home = ({ refresh }) => {
                                 Try Html Editor
                             </a>
                         </div>
+
+                        <Divider sx={{ borderColor: accentColor, margin: '20px 0' }} />
+
+                        <div className="p-3">
+                            <h2 className="text-center fw-bold p-2" style={{ fontFamily: 'serif' }}>Try our Language Editor</h2>
+                            <iframe
+                                frameBorder="0"
+                                height="450px"
+                                src="https://onecompiler.com/embed/"
+                                width="100%"
+                            ></iframe>
+                        </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     );
 }
