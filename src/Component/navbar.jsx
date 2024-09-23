@@ -67,7 +67,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
               </Menu>
             </>
           ) : (
-            <a className="btn btn-success" href="login">Login</a>
+            <a className="btn btn-dark" href="login">Login</a>
           )}
         </div>
       </div>
