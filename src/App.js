@@ -23,6 +23,8 @@ import McqTopics from './Pages/McqTopics.js';
 import TutorialTopics from './tutorials/TutorialTopics';
 import Profile from "./Pages/Profile";
 import Topics from "./code/Topics.js";
+import HtmlEditor from "./Component/HtmlEditor.js";
+import CodeEditor from "./Component/CodeEditor.js";
 
 const App = () => {
   return (
@@ -50,6 +52,8 @@ const App = () => {
             <Route element={<McqQuiz />} path='/topics/:topicId/questions' />
             <Route element={<Profile/>} path='/profile' />
             <Route element={<Topics />} path="/topics/:url" />
+            <Route element={<HtmlEditor/>} path="/editor" />
+            <Route element={<CodeEditor/>} path="/edit" />
           </Routes>
         </Layout>
       </Router>

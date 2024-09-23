@@ -120,3 +120,11 @@ button:hover i::after {
 .image-slide-in {
   animation: slideIn 1.5s ease-out forwards;
 }
+
+
+.responsive-video {
+  width: 100%;
+  max-width: 600px; /* Set a max width to maintain aspect ratio */
+  border-radius: 10px;
+  box-shadow: var(--shadow-light); /* You can adjust for dark/light themes */
+}

@@ -1,12 +1,12 @@
 import { connect } from "react-redux";
 import { refresh } from "../reducer/Actions";
-// src/pages/Home.js
 import React, { useContext, useEffect, useState } from 'react';
 import { ThemeContext } from '../Component/ThemeContext';
 import '../styles/background.css'; // Import the CSS file for custom styling
 import { Divider } from '@mui/material';
 import axios from 'axios';
-import image1 from '../styles/renamed.png'
+import image1 from '../styles/renamed.png';
+import video from '../styles/intro.mp4'
 
 const Home = ({ refresh }) => {
     const { theme } = useContext(ThemeContext);
@@ -42,9 +42,10 @@ const Home = ({ refresh }) => {
         const colors = theme === 'light' ? ['#f0f0f0', '#e0e0e0', '#d0d0d0'] : ['#36454F', '#2f4f4f', '#2e2e2e'];
         return colors[index % colors.length]; // Cycle through colors based on the index
     };
+
     return (
         <div className="starry-background" style={{ backgroundColor: theme === 'light' ? '#ffffff' : '#121212', color: theme === 'light' ? '#000' : '#fff' }}>
-            <div className='container pb-3'>
+            <div className='container pb-3' style={{ fontFamily: 'unset' }}>
                 <div className='row'>
                     <div className='col-md-8'>
                         <div className='header'>
@@ -55,18 +56,23 @@ const Home = ({ refresh }) => {
                             <p className='text-center fw-bold'>
                                 Dive into the world of technology with our comprehensive Java courses and resources. From beginner fundamentals to advanced concepts, we provide interactive tutorials, hands-on projects, and expert guidance to accelerate your learning journey. Empower yourself with practical skills and stay ahead in the ever-evolving tech landscape.
                             </p>
-                            <center>
-                               
-                            </center>
+
+                            <div className='d-grid gap-2 col-12 col-md-4 col-lg-4 d-grid mx-auto'>
+                                <a href={`/signup`} className='btn btn-secondary' style={{ backgroundColor: theme === 'light' ? 'tomato' : 'tomato', color: '#fff' }}>
+                                    Register
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className='col-md-4'>
                         <img src={image1} alt='' className='img-fluid image-slide-in' style={{ borderRadius: '20px' }} />
                     </div>
                 </div>
-
             </div>
+
             <Divider sx={{ borderColor: accentColor }} />
+
+            {/* Tutorials Section */}
             <div style={{ padding: '20px', borderRadius: '10px' }}>
                 {tutorials.map((tutorial, index) => (
                     <div
@@ -115,8 +121,27 @@ const Home = ({ refresh }) => {
                     </div>
                 ))}
             </div>
+
+            <div className='container pb-3'>
+                <div className='row'>
+                    <div className='col-md-12'>
+                        <h2 className="text-center fw-bold p-2" style={{ fontFamily: 'serif' }}>Try our Html Editor</h2>
+                        <div style={{ display: 'flex', justifyContent: 'center', margin: '20px' }}>
+                            <video controls className="responsive-video">
+                                <source src={video} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div className='d-grid gap-2 col-12 col-md-4 col-lg-4 d-grid mx-auto'>
+                            <a href={`/editor`} className='btn btn-success' style={{ backgroundColor: theme === 'light' ? 'tomato' : 'grey', color: '#fff' }}>
+                                Try Html Editor
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
         </div>
-    )
+    );
 }
 
 export default connect(null, { refresh })(Home);

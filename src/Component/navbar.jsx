@@ -51,7 +51,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
           {isAuthenticated ? (
             <>
               <IconButton onClick={handleMenuOpen}>
-                <Avatar sx={{ bgcolor: accentColor }}>U</Avatar> {/* Change 'U' to user's initial */}
+                <Avatar sx={{ bgcolor: accentColor }}>A</Avatar> {/* Change 'U' to user's initial */}
               </IconButton>
               <Menu
                 anchorEl={anchorEl}
@@ -67,7 +67,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
               </Menu>
             </>
           ) : (
-            <a className="btn btn-success" href="login">login</a>
+            <a className="btn btn-success" href="login">Login</a>
           )}
         </div>
       </div>
