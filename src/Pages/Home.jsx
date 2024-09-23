@@ -152,6 +152,27 @@ const Home = ({ refresh }) => {
                     </div>
                 </div>
             </div>
+
+            <div className='container pb-3'>
+                <div className="row" style={{ justifyContent: 'space-around' }}>
+                    <div className="col-md-5" style={{ minHeight: '40vh', borderRadius: '20px', backgroundColor: '#FFFFE0' }}>
+                        <h2 className="text-center text-dark fw-bold mt-5">Take a challenge</h2>
+                        <p className="text-center text-success fw-bold mt-3">Take a challenge in any desired language</p>
+                        <div className='d-grid gap-2 col-12 col-md-4 col-lg-4 d-grid mx-auto'>
+                            <a href="/challenge" style={{ padding: '10px' }} className="btn btn-success mt-5">Click here</a>
+                        </div>
+
+                    </div>
+
+                    <div className="col-md-5" style={{ minHeight: '40vh', borderRadius: '20px', backgroundColor: '#ADD8E6' }}>
+                        <h2 className="text-center text-dark fw-bold mt-5">Take a Quizzes</h2>
+                        <p className="text-center text-success fw-bold mt-3">Take a challenge in any desired language</p>
+                        <div className='d-grid gap-2 col-12 col-md-4 col-lg-4 d-grid mx-auto'>
+                            <a href="/" style={{ padding: '10px' }} className="btn btn-success mt-5">Click here</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

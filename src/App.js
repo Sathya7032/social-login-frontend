@@ -25,6 +25,7 @@ import Profile from "./Pages/Profile";
 import Topics from "./code/Topics.js";
 import HtmlEditor from "./Component/HtmlEditor.js";
 import CodeEditor from "./Component/CodeEditor.js";
+import Challenge from "./Component/Challenge.js";
 
 const App = () => {
   return (
@@ -54,6 +55,7 @@ const App = () => {
             <Route element={<Topics />} path="/topics/:url" />
             <Route element={<HtmlEditor/>} path="/editor" />
             <Route element={<CodeEditor/>} path="/edit" />
+            <Route element={<Challenge />} path="/challenge" />
           </Routes>
         </Layout>
       </Router>
