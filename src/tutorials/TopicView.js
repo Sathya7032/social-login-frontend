@@ -8,7 +8,7 @@ import { ThemeContext } from '../Component/ThemeContext';
 import '../styles/video.css'
 
 export default function TopicView() {
-    const baseUrl = 'https://www.acadamicfolio.info/app';
+    const baseUrl = 'https://acadamicfolio.pythonanywhere.com/app';
     const { url } = useParams();
     const { theme } = useContext(ThemeContext); // Access the theme from the ThemeContext
     const [topic, setTopic] = useState({});
