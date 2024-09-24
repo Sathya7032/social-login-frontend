@@ -26,6 +26,7 @@ import Topics from "./code/Topics.js";
 import HtmlEditor from "./Component/HtmlEditor.js";
 import CodeEditor from "./Component/CodeEditor.js";
 import Challenge from "./Component/Challenge.js";
+import SearchComponent from "./Component/SearchComponent.js";
 
 const App = () => {
   return (
@@ -56,6 +57,7 @@ const App = () => {
             <Route element={<HtmlEditor/>} path="/editor" />
             <Route element={<CodeEditor/>} path="/edit" />
             <Route element={<Challenge />} path="/challenge" />
+            <Route element={<SearchComponent />} path="/search" />
           </Routes>
         </Layout>
       </Router>

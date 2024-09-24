@@ -95,7 +95,7 @@ const SingleBlog = () => {
                                     }}
                                 >
                                     <span style={{ color: theme === 'light' ? '#1976d2' : '#90caf9' }}>Blog written by: </span>
-                                    {post.user ? post.user.username : "Unknown"}
+                                    {post.user ? post.user.first_name : "Unknown"}
                                 </Typography>
                             </Paper>
                         </>

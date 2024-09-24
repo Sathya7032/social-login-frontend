@@ -41,6 +41,7 @@ const Shorts = () => {
     <div style={{
       backgroundColor: theme === 'light' ? '#ffffff' : '#121212',
       color: theme === 'light' ? '#000' : '#fff',
+      maxHeight:'100vh'
     }}>
         <div className="container p-5">
           <h1 className="mb-4">Video Library</h1>

@@ -2,24 +2,30 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { ThemeContext } from '../Component/ThemeContext';
-import image from '../styles/astronaut2.png'
+import image from '../styles/astronaut2.png';
+import { ClipLoader } from 'react-spinners'; // Import the spinner component
 
 export default function McqTopics() {
     const baseUrl = "https://acadamicfolio.pythonanywhere.com/app";
     const { theme } = useContext(ThemeContext);
     const { url } = useParams();
     const [topics, setTopics] = useState([]);
+    const [loading, setLoading] = useState(true); // Add loading state
 
     useEffect(() => {
-        axios
-            .get(`${baseUrl}/mcq-topics/${url}`)
-            .then((response) => {
+        const fetchTopics = async () => {
+            try {
+                const response = await axios.get(`${baseUrl}/mcq-topics/${url}`);
                 setTopics(response.data);
                 console.log(response.data);
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error("Error fetching topics:", error);
-            });
+            } finally {
+                setLoading(false); // Set loading to false when fetching is complete
+            }
+        };
+
+        fetchTopics();
     }, [url]);
 
     return (
@@ -29,7 +35,6 @@ export default function McqTopics() {
                 color: theme === 'light' ? '#000' : '#fff',
             }}
         >
-
             <h1
                 className='text-center p-5'
                 style={{
@@ -43,7 +48,11 @@ export default function McqTopics() {
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-8'>
-                        {topics.length > 0 ? (
+                        {loading ? ( // Show loading spinner while fetching
+                            <div className="text-center" style={{ padding: 20 }}>
+                                <ClipLoader color="#007bff" loading={loading} size={50} />
+                            </div>
+                        ) : topics.length > 0 ? (
                             <ul className='list-group'>
                                 {topics.map((topic, index) => (
                                     <li
@@ -82,9 +91,7 @@ export default function McqTopics() {
                         <img src={image} alt='' className='img-fluid' style={{ borderRadius: '20px' }} />
                     </div>
                 </div>
-
             </div>
-
         </div>
     );
 }

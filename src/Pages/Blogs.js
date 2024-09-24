@@ -23,7 +23,7 @@ const Blogs = () => {
       const response = await axios.get(`${baseUrl}/blogs/`, {
         params: {
           page: currentPage,
-          query: query.trim() // Include query parameter if it's not empty
+          query: query.trim() || undefined // Include query parameter if it's not empty
         }
       });
       setBlogs(response.data.results);
@@ -79,35 +79,36 @@ const Blogs = () => {
 
   return (
     <div style={{ backgroundColor: theme === 'light' ? '#ffffff' : '#121212', color: theme === 'light' ? '#000' : '#fff' }}>
-        <div className="container pt-3">
-          {/* Search form */}
-          <form onSubmit={handleSearch} className="mb-4">
-            <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                style={searchStyle}
-                placeholder="Search blogs..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-              <div className="input-group-append">
-                <button className="btn btn-primary" type="submit">Search</button>
-              </div>
-              {query && (
-                <div className="input-group-append">
-                  <button className="btn btn-secondary" onClick={clearSearch} type="button">Clear</button>
-                </div>
-              )}
+      <div className="container pt-3">
+        {/* Search form */}
+        <form onSubmit={handleSearch} className="mb-4">
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              style={searchStyle}
+              placeholder="Search blogs..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <div className="input-group-append">
+              <button className="btn btn-primary" type="submit">Search</button>
             </div>
-          </form>
+            {query && (
+              <div className="input-group-append">
+                <button className="btn btn-secondary" onClick={clearSearch} type="button">Clear</button>
+              </div>
+            )}
+          </div>
+        </form>
 
-          <div className="row">
-            {loading ? (
-              <div>Loading...</div>
-            ) : (
-              <div className="mt-4">
-                {blogs.map((blog) => (
+        <div className="row">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <div className="mt-4">
+              {blogs.length > 0 ? (
+                blogs.map((blog) => (
                   <div key={blog.id} className="card mb-2" style={cardStyle}>
                     <div className="card-body">
                       <h3 className="card-title">{blog.title}</h3>
@@ -120,30 +121,33 @@ const Blogs = () => {
                       </a>
                     </div>
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Pagination controls */}
-          <div className="d-flex justify-content-center p-3">
-            <button
-              className="btn btn-secondary mr-2"
-              onClick={handlePreviousPage}
-              disabled={currentPage === 1}
-            >
-              Previous
-            </button>
-            <span>{currentPage} / {totalPages}</span>
-            <button
-              className="btn btn-secondary ml-2"
-              onClick={handleNextPage}
-              disabled={currentPage === totalPages}
-            >
-              Next
-            </button>
-          </div>
+                ))
+              ) : (
+                <div>No blogs found.</div> // Message when no blogs are found
+              )}
+            </div>
+          )}
         </div>
+
+        {/* Pagination controls */}
+        <div className="d-flex justify-content-center p-3">
+          <button
+            className="btn btn-secondary mr-2"
+            onClick={handlePreviousPage}
+            disabled={currentPage === 1}
+          >
+            Previous
+          </button>
+          <span>{currentPage} / {totalPages}</span>
+          <button
+            className="btn btn-secondary ml-2"
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

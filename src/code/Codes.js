@@ -6,17 +6,20 @@ import CodeDisplay from "./CodeDisplay";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { ThemeContext } from "../Component/ThemeContext";
 import { useTheme } from '@mui/material/styles';
+import { ClipLoader } from 'react-spinners'; // Import the spinner component
 
 const Codes = () => {
     const baseUrl = "https://acadamicfolio.pythonanywhere.com/app";
     const { url } = useParams();
     const [topics, setTopics] = useState(null);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true); // Add loading state
     const { theme } = useContext(ThemeContext);
     const the = useTheme();
     const isMobile = useMediaQuery(the.breakpoints.down('sm'));
 
     useEffect(() => {
+        setLoading(true); // Set loading to true when fetching starts
         axios
             .get(`${baseUrl}/languages/codes/${url}/`)
             .then((response) => {
@@ -25,19 +28,26 @@ const Codes = () => {
             .catch((error) => {
                 setError("Error fetching tutorials");
                 console.error("Error fetching tutorials:", error);
+            })
+            .finally(() => {
+                setLoading(false); // Set loading to false when fetching ends
             });
     }, [url]);
 
     return (
         <div
-            style={{ backgroundColor: theme === 'light' ? '#ffffff' : '#121212', color: theme === 'light' ? '#000' : '#fff', justifyContent: 'center', alignContent: 'center' }}
+            style={{ backgroundColor: theme === 'light' ? '#ffffff' : '#121212', color: theme === 'light' ? '#000' : '#fff', justifyContent: 'center', alignContent: 'center', maxHeight:'100vh' }}
         >
             {error && (
                 <Typography color="error" style={{ margin: 20 }}>
                     {error}
                 </Typography>
             )}
-            {topics && (
+            {loading ? ( // Show loading spinner while fetching
+                <div className="text-center" style={{ padding: 20 }}>
+                    <ClipLoader color={theme === 'light' ? '#000' : '#fff'} loading={loading} size={50} />
+                </div>
+            ) : topics && (
                 <>
                     <Paper
                         style={{
@@ -59,7 +69,7 @@ const Codes = () => {
                         <script
                             async
                             src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6919135852803356"
-                            crossorigin="anonymous"
+                            crossOrigin="anonymous"
                         ></script>
                         <ins
                             className="adsbygoogle"

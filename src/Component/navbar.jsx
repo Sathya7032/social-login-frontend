@@ -5,12 +5,14 @@ import { ThemeContext } from './ThemeContext';
 import { Divider, IconButton, Button, Avatar, Menu, MenuItem } from '@mui/material';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { useLocation } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search'; 
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/navbar.css';
 
 const Navbar = ({ logout, isAuthenticated }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -31,7 +33,13 @@ const Navbar = ({ logout, isAuthenticated }) => {
   const isActiveLink = (path) => location.pathname === path;
   const footerBgColor = theme === 'light' ? '#f8f9fa' : '#343a40';
 
-  
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    // Navigate to the search page
+    navigate('/search'); // Change '/search' to your search page route
+  };
+
+
   return (
     <>
       <div className="navbar-container" style={{ backgroundColor: footerBgColor }}>
@@ -41,7 +49,13 @@ const Navbar = ({ logout, isAuthenticated }) => {
             <h2 className="fw-bold" style={{ margin: 0, color: accentColor }}>Folio</h2>
           </div>
         </a>
-        <div style={{ display: 'flex', alignItems: 'center' }} className="ms-auto"> {/* Align to the right */}
+        <div style={{ display: 'flex', alignItems: 'center' }} className="ms-auto">
+          <IconButton
+            onClick={handleSearchSubmit}
+            sx={{ color: theme === 'light' ? '#000' : '#fff' }}
+          >
+            <SearchIcon />
+          </IconButton>
           <IconButton
             onClick={toggleTheme}
             sx={{ color: theme === 'light' ? '#000' : '#fff' }}
@@ -51,7 +65,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
           {isAuthenticated ? (
             <>
               <IconButton onClick={handleMenuOpen}>
-                <Avatar sx={{ bgcolor: accentColor, width: 32, height: 32, fontSize: 16 }}>A</Avatar> {/* Change 'U' to user's initial */}
+                <Avatar sx={{ bgcolor: accentColor, width: 32, height: 32, fontSize: 16 }}>A</Avatar>
               </IconButton>
               <Menu
                 anchorEl={anchorEl}
@@ -73,7 +87,6 @@ const Navbar = ({ logout, isAuthenticated }) => {
       </div>
       <Divider sx={{ borderColor: accentColor }} />
 
-      {/* Bootstrap Navbar */}
       <nav className={navbarClass}>
         <div className="container-fluid text-center">
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,17 +110,15 @@ const Navbar = ({ logout, isAuthenticated }) => {
                 <a className={`nav-item nav-link ${isActiveLink("/shorts") ? "active" : ""}`} aria-current="page" href="/shorts">Shorts</a>
               </li>
             </ul>
-            <form className="d-flex">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-info" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </nav>
       <Divider sx={{ borderColor: accentColor }} />
+
+    
     </>
   );
-}
+};
 
 const mapStateToProps = (state) => {
   return {

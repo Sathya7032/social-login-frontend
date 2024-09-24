@@ -3,15 +3,18 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Typography } from "@mui/material";
 import { ThemeContext } from "../Component/ThemeContext";
-import image from '../styles/astronaut2.png'
+import image from '../styles/astronaut2.png';
+import { ClipLoader } from 'react-spinners'; // Import the spinner component
 
 const CodeTopics = () => {
     const baseUrl = "https://acadamicfolio.pythonanywhere.com/app";
     const { url } = useParams();
     const [codes, setCodes] = useState([]);
+    const [loading, setLoading] = useState(true); // Add loading state
     const { theme } = useContext(ThemeContext);
 
     useEffect(() => {
+        setLoading(true); // Set loading to true when fetching starts
         axios
             .get(baseUrl + `/languages/${url}/codes/`)
             .then((response) => {
@@ -19,22 +22,30 @@ const CodeTopics = () => {
             })
             .catch((error) => {
                 console.error("Error fetching codes:", error);
+            })
+            .finally(() => {
+                setLoading(false); // Set loading to false when fetching ends
             });
     }, [url]);
 
     return (
         <div style={{ backgroundColor: theme === 'light' ? '#ffffff' : '#121212', color: theme === 'light' ? '#000000' : '#ffffff', minHeight: '100vh' }}>
-                <Typography
-                    variant="h4"
-                    style={{ textAlign: "center", paddingTop: 20, fontFamily: 'cursive' }}
-                >
-                    Pick your Program
-                </Typography>
+            <Typography
+                variant="h4"
+                style={{ textAlign: "center", paddingTop: 20, fontFamily: 'cursive' }}
+            >
+                Pick your Program
+            </Typography>
 
-                <div className="container p-5">
-                    <div className="row">
-                        <div className="col-md-8">
-                            {codes.length > 0 ? (
+            <div className="container p-5">
+                <div className="row">
+                    <div className="col-md-8">
+                        {loading ? ( // Show loading spinner while fetching
+                            <div className="text-center">
+                                <ClipLoader color={theme === 'light' ? '#000' : '#fff'} loading={loading} size={50} />
+                            </div>
+                        ) : (
+                            codes.length > 0 ? (
                                 <ul className='list-group'>
                                     {codes.map((code, index) => (
                                         <div key={code.id}>
@@ -52,14 +63,15 @@ const CodeTopics = () => {
                                 <Typography variant="h6" style={{ textAlign: "center", color: theme === 'light' ? '#000000' : '#ffffff' }}>
                                     No codes yet
                                 </Typography>
-                            )}
-                        </div>
-                        <div className="col-md-4">
-                            <img src={image} alt='' className='img-fluid' style={{ borderRadius: '20px' }} />
-                        </div>
+                            )
+                        )}
                     </div>
-
+                    <div className="col-md-4">
+                        <img src={image} alt='' className='img-fluid' style={{ borderRadius: '20px' }} />
+                    </div>
                 </div>
+
+            </div>
         </div>
     );
 };
