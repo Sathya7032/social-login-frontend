@@ -53,3 +53,12 @@
     }
   }
   
+  .nav-links:hover {
+    background-color: tomato;
+    color: white;
+  }
+
+  .nav-links:active {
+    background-color: tomato;
+    color: white;
+  }

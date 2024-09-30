@@ -5,7 +5,7 @@ import { ThemeContext } from './ThemeContext';
 import { Divider, IconButton, Button, Avatar, Menu, MenuItem } from '@mui/material';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import SearchIcon from '@mui/icons-material/Search'; 
+import SearchIcon from '@mui/icons-material/Search';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/navbar.css';
 
@@ -89,7 +89,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
       <nav className={navbarClass}>
         <div className="container-fluid text-center">
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button className="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
@@ -115,7 +115,86 @@ const Navbar = ({ logout, isAuthenticated }) => {
       </nav>
       <Divider sx={{ borderColor: accentColor }} />
 
-    
+      <div
+        className="bg-dark"
+        style={{
+          backgroundColor: '#1e1e1e', // Dark background color
+          padding: '0px', // Adjust padding if necessary
+          margin: 0, // Remove any extra margin
+        }}
+      >
+        <ul
+          className="text-white"
+          style={{
+            listStyle: 'none',
+            display: 'flex',
+            padding: 0,
+            margin: 0, // Ensure there's no margin causing a gap
+            overflowX: 'auto', // Enables horizontal scrolling
+            whiteSpace: 'nowrap', // Prevents items from wrapping to the next line
+          }}
+        >
+          <li style={{ padding: '10px 0' }}>
+            <a
+              href="#"
+              className="nav-links"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                padding: '10px',
+                borderRadius: '5px',
+              }}
+            >
+              Python
+            </a>
+          </li>
+          <li style={{ padding: '10px 0' }}>
+            <a
+              href="#"
+              className="nav-links"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                padding: '10px',
+                borderRadius: '5px',
+              }}
+            >
+              JavaScript
+            </a>
+          </li>
+          <li style={{ padding: '10px 0' }}>
+            <a
+              href="#"
+              className="nav-links"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                padding: '10px',
+                borderRadius: '5px',
+              }}
+            >
+              React
+            </a>
+          </li>
+          <li style={{ padding: '10px 0' }}>
+            <a
+              href="#"
+              className="nav-links"
+              style={{
+                textDecoration: 'none',
+                color: 'white',
+                padding: '10px',
+                borderRadius: '5px',
+              }}
+            >
+              Django
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
+
     </>
   );
 };
