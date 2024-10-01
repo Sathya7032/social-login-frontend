@@ -148,6 +148,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
               Python
             </a>
           </li>
+          <Divider orientation="horizontal" style={{color:'white'}}/>
           <li style={{ padding: '10px 0' }}>
             <a
               href="#"
