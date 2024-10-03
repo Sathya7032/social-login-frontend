@@ -27,6 +27,7 @@ import HtmlEditor from "./Component/HtmlEditor.js";
 import CodeEditor from "./Component/CodeEditor.js";
 import Challenge from "./Component/Challenge.js";
 import SearchComponent from "./Component/SearchComponent.js";
+import TopicDetail from "./tutorials/TopicDetail.js";
 
 const App = () => {
   return (
@@ -54,6 +55,7 @@ const App = () => {
             <Route element={<McqQuiz />} path='/topics/:topicId/questions' />
             <Route element={<Profile/>} path='/profile' />
             <Route element={<Topics />} path="/topics/:url" />
+            <Route element={<TopicDetail/>} path="/topic/:url"/>
             <Route element={<HtmlEditor/>} path="/editor" />
             <Route element={<CodeEditor/>} path="/edit" />
             <Route element={<Challenge />} path="/challenge" />
