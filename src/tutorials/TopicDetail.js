@@ -62,7 +62,6 @@ const TopicDetail = () => {
     fontSize: '1em',
     marginTop: '15px',
     padding: '10px 0',
-    textAlign: 'justify',
   };
 
 
