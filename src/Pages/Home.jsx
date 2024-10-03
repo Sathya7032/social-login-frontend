@@ -95,7 +95,7 @@ const Home = ({ refresh }) => {
                                             {tutorial.name} Code snippets
                                         </a>
                                         <a href={`/tutorials/${tutorial.url}`} className='btn btn-success' style={{ backgroundColor: theme === 'light' ? 'grey' : 'grey', color: '#fff' }}>
-                                            {tutorial.name} Videos
+                                            {tutorial.name} Tutorials
                                         </a>
                                         <a href={`/test/${tutorial.url}`} className='btn btn-success' style={{ backgroundColor: theme === 'light' ? 'green' : 'green', color: '#fff' }}>
                                             {tutorial.name} Tests
