@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { logout } from "../reducer/Actions";
 import { ThemeContext } from './ThemeContext';
@@ -8,6 +8,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import SearchIcon from '@mui/icons-material/Search';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../styles/navbar.css';
+import axios from "axios";
 
 const Navbar = ({ logout, isAuthenticated }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -37,6 +38,30 @@ const Navbar = ({ logout, isAuthenticated }) => {
     e.preventDefault();
     // Navigate to the search page
     navigate('/search'); // Change '/search' to your search page route
+  };
+
+  const baseUrl = 'https://acadamicfolio.pythonanywhere.com/app';
+
+  const [tutorials, setTutorials] = useState([]);
+
+  // Fetch data on component mount
+  useEffect(() => {
+    fetchTodos();
+  }, []);
+
+  // Function to fetch tutorials from the API
+  const fetchTodos = async () => {
+    await axios
+      .get(baseUrl + '/languages/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setTutorials(res.data);
+      });
   };
 
 
@@ -134,63 +159,25 @@ const Navbar = ({ logout, isAuthenticated }) => {
             whiteSpace: 'nowrap', // Prevents items from wrapping to the next line
           }}
         >
-          <li style={{ padding: '10px 0' }}>
-            <a
-              href="#"
-              className="nav-links"
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-                padding: '10px',
-                borderRadius: '5px',
-              }}
-            >
-              Python
-            </a>
-          </li>
-          <Divider orientation="horizontal" style={{color:'white'}}/>
-          <li style={{ padding: '10px 0' }}>
-            <a
-              href="#"
-              className="nav-links"
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-                padding: '10px',
-                borderRadius: '5px',
-              }}
-            >
-              JavaScript
-            </a>
-          </li>
-          <li style={{ padding: '10px 0' }}>
-            <a
-              href="#"
-              className="nav-links"
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-                padding: '10px',
-                borderRadius: '5px',
-              }}
-            >
-              React
-            </a>
-          </li>
-          <li style={{ padding: '10px 0' }}>
-            <a
-              href="#"
-              className="nav-links"
-              style={{
-                textDecoration: 'none',
-                color: 'white',
-                padding: '10px',
-                borderRadius: '5px',
-              }}
-            >
-              Django
-            </a>
-          </li>
+          {tutorials.map((tut) => (
+            <li style={{ padding: '10px 0' }}>
+              <a
+                key={tut.id}
+                href={`/tutorials/${tut.url}`}
+                className="nav-links"
+                style={{
+                  textDecoration: 'none',
+                  color: 'white',
+                  padding: '10px',
+                  borderRadius: '5px',
+                }}
+              >
+                {tut.name}
+              </a>
+            </li>
+          ))}
+
+
         </ul>
       </div>
 
