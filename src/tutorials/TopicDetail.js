@@ -4,12 +4,13 @@ import axios from 'axios';
 import { ThemeContext } from '../Component/ThemeContext';
 import { Divider, Typography } from '@mui/material';
 import ReactPlayer from "react-player";
-import { ClipLoader } from 'react-spinners'; // Import the spinner component
+import { ClipLoader } from 'react-spinners';
+import DOMPurify from 'dompurify';
 
 const TopicDetail = () => {
   const { theme } = useContext(ThemeContext);
   const [codes, setCodes] = useState([]);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
   const { url } = useParams();
   const [topic, setTopic] = useState(null);
   const baseUrl = 'https://acadamicfolio.pythonanywhere.com/app';
@@ -28,9 +29,9 @@ const TopicDetail = () => {
   }, [url]);
 
   useEffect(() => {
-    setLoading(true); // Set loading to true when fetching starts
+    setLoading(true);
     axios
-      .get(baseUrl + `/languages/${url}/codes/`)
+      .get(`${baseUrl}/languages/${url}/codes/`)
       .then((response) => {
         setCodes(response.data);
       })
@@ -38,16 +39,17 @@ const TopicDetail = () => {
         console.error("Error fetching codes:", error);
       })
       .finally(() => {
-        setLoading(false); // Set loading to false when fetching ends
+        setLoading(false);
       });
-
   }, [url]);
 
   const containerStyle = {
     maxWidth: '100%',
     margin: '0 auto',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    backgroundColor: theme === 'light' ? '#ffffff' : '#121212', color: theme === 'light' ? '#000' : '#fff', padding: '20px'
+    backgroundColor: theme === 'light' ? '#ffffff' : '#121212',
+    color: theme === 'light' ? '#000' : '#fff',
+    padding: '20px',
   };
 
   const titleStyle = {
@@ -62,8 +64,8 @@ const TopicDetail = () => {
     fontSize: '1em',
     marginTop: '15px',
     padding: '10px 0',
+    textAlign: 'left',
   };
-
 
   return (
     <div style={containerStyle}>
@@ -85,7 +87,7 @@ const TopicDetail = () => {
             <div
               className="topic-content"
               style={contentStyle}
-              dangerouslySetInnerHTML={{ __html: topic.post_content }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(topic.post_content) }}
             />
           </div>
 
@@ -95,7 +97,7 @@ const TopicDetail = () => {
             <div className="row">
               <div className="col-md-12">
                 <h1 className='pb-3' style={titleStyle}>Practice codes</h1>
-                {loading ? ( // Show loading spinner while fetching
+                {loading ? (
                   <div className="text-center">
                     <ClipLoader color={theme === 'light' ? '#000' : '#fff'} loading={loading} size={50} />
                   </div>
@@ -121,15 +123,20 @@ const TopicDetail = () => {
                   )
                 )}
               </div>
-
             </div>
-
           </div>
-
         </>
       ) : (
         <p style={{ textAlign: 'center' }}>Loading topic...</p>
       )}
+      <style jsx>{`
+        .topic-content img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 0 auto;
+        }
+      `}</style>
     </div>
   );
 };
