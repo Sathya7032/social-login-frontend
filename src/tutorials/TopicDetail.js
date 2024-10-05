@@ -6,6 +6,7 @@ import { Divider, Typography } from '@mui/material';
 import ReactPlayer from "react-player";
 import { ClipLoader } from 'react-spinners';
 import DOMPurify from 'dompurify';
+import { Helmet } from 'react-helmet'; // Import React Helmet
 
 const TopicDetail = () => {
   const { theme } = useContext(ThemeContext);
@@ -71,13 +72,25 @@ const TopicDetail = () => {
 
   return (
     <div style={containerStyle}>
+      {/* Add SEO meta tags dynamically */}
+      {topic && (
+        <Helmet>
+          <title>{topic.post_title} - My Website</title>
+          <meta name="description" content={topic.post_content.substring(0, 150)} />
+          <meta name="keywords" content={`${topic.post_title}, tutorials, code examples`} />
+          <meta property="og:title" content={topic.post_title} />
+          <meta property="og:description" content={topic.post_content.substring(0, 150)} />
+          <meta property="og:image" content={topic.post_image || '/default-image.jpg'} />
+          <meta property="og:type" content="article" />
+          <meta property="og:url" content={`https://yourwebsite.com/tutorials/${url}`} />
+        </Helmet>
+      )}
+
       {topic ? (
         <>
           <div className="topic-detail-container">
             <div className='row'>
-              <div className='col-md-2 bg-secondary'>
-               
-              </div>
+              <div className='col-md-2 bg-secondary'></div>
               <div className='col-md-8'>
                 <h1 style={titleStyle}>{topic.post_title}</h1>
                 <Divider />
@@ -95,10 +108,7 @@ const TopicDetail = () => {
                   dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(topic.post_content) }}
                 />
               </div>
-
-              <div className='col-md-2 bg-secondary'>
-               
-              </div>
+              <div className='col-md-2 bg-secondary'></div>
             </div>
           </div>
 
