@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap-image/1.0">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap-image/1.0" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap-image/1.0 
+        http://www.sitemaps.org/schemas/sitemap-image/1.0/sitemap-image.xsd">
+
     <url>
         <loc>https://acadamicfolio.info/</loc>
         <lastmod>2024-10-05</lastmod>
