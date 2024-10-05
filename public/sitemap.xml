@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap-image/1.0">
     <url>
         <loc>https://acadamicfolio.info/</loc>
         <lastmod>2024-10-05</lastmod>
@@ -31,13 +31,13 @@
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://acadamicfolio.info/dj-rest-auth/registration/account-confirm-email/:key/</loc>
+        <loc>https://acadamicfolio.info/dj-rest-auth/registration/account-confirm-email/some_key/</loc>
         <lastmod>2024-10-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://acadamicfolio.info/reset/password/confirm/:uid/:token</loc>
+        <loc>https://acadamicfolio.info/reset/password/confirm/some_uid/some_token</loc>
         <lastmod>2024-10-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -67,37 +67,37 @@
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://acadamicfolio.info/blogs/:url/</loc>
+        <loc>https://acadamicfolio.info/blogs/some_blog_url/</loc>
         <lastmod>2024-10-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://acadamicfolio.info/tutorials/:url</loc>
+        <loc>https://acadamicfolio.info/tutorials/some_tutorial_url</loc>
         <lastmod>2024-10-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://acadamicfolio.info/languages/:url/codes</loc>
+        <loc>https://acadamicfolio.info/languages/some_language/codes</loc>
         <lastmod>2024-10-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://acadamicfolio.info/languages/codes/:url/</loc>
+        <loc>https://acadamicfolio.info/languages/codes/some_code_url/</loc>
         <lastmod>2024-10-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://acadamicfolio.info/test/:url</loc>
+        <loc>https://acadamicfolio.info/test/some_test_url</loc>
         <lastmod>2024-10-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://acadamicfolio.info/topics/:topicId/questions</loc>
+        <loc>https://acadamicfolio.info/topics/some_topicId/questions</loc>
         <lastmod>2024-10-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
@@ -109,13 +109,13 @@
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://acadamicfolio.info/topics/:url</loc>
+        <loc>https://acadamicfolio.info/topics/some_topic_url</loc>
         <lastmod>2024-10-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
-        <loc>https://acadamicfolio.info/topic/:url</loc>
+        <loc>https://acadamicfolio.info/topic/some_topic_url</loc>
         <lastmod>2024-10-05</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
