@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { ThemeContext } from '../Component/ThemeContext';
 import { Divider, Typography } from '@mui/material';
@@ -12,21 +12,24 @@ const TopicDetail = () => {
   const [codes, setCodes] = useState([]);
   const [loading, setLoading] = useState(true);
   const { url } = useParams();
-  const [topic, setTopic] = useState(null);
+  const location = useLocation();
+  const [topic, setTopic] = useState(location.state?.topic || null);
   const baseUrl = 'https://acadamicfolio.pythonanywhere.com/app';
 
   useEffect(() => {
-    const fetchTopic = async () => {
-      try {
-        const response = await axios.get(`${baseUrl}/tutorials/posts/${url}/`);
-        setTopic(response.data);
-      } catch (error) {
-        console.error('Error fetching topic:', error);
-      }
-    };
+    if (!topic) {
+      const fetchTopic = async () => {
+        try {
+          const response = await axios.get(`${baseUrl}/tutorials/posts/${url}/`);
+          setTopic(response.data);
+        } catch (error) {
+          console.error('Error fetching topic:', error);
+        }
+      };
 
-    fetchTopic();
-  }, [url]);
+      fetchTopic();
+    }
+  }, [url, topic]);
 
   useEffect(() => {
     setLoading(true);
@@ -49,7 +52,6 @@ const TopicDetail = () => {
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     backgroundColor: theme === 'light' ? '#ffffff' : '#121212',
     color: theme === 'light' ? '#000' : '#fff',
-    padding: '20px',
   };
 
   const titleStyle = {
@@ -72,23 +74,32 @@ const TopicDetail = () => {
       {topic ? (
         <>
           <div className="topic-detail-container">
-            <h1 style={titleStyle}>{topic.post_title}</h1>
-            <Divider />
+            <div className='row'>
+              <div className='col-md-2 bg-secondary'>
+               
+              </div>
+              <div className='col-md-8'>
+                <h1 style={titleStyle}>{topic.post_title}</h1>
+                <Divider />
+                <center style={{ marginBottom: 20, marginTop: 10 }}>
+                  <ReactPlayer
+                    url={topic.post_video}
+                    className="react-player"
+                    width="70%"
+                    controls={true}
+                  />
+                </center>
+                <div
+                  className="topic-content"
+                  style={contentStyle}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(topic.post_content) }}
+                />
+              </div>
 
-            <center style={{ marginBottom: 20, marginTop: 10 }}>
-              <ReactPlayer
-                url={topic.post_video}
-                className="react-player"
-                width="70%"
-                controls={true}
-              />
-            </center>
-
-            <div
-              className="topic-content"
-              style={contentStyle}
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(topic.post_content) }}
-            />
+              <div className='col-md-2 bg-secondary'>
+               
+              </div>
+            </div>
           </div>
 
           <Divider />
